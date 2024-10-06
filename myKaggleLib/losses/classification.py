@@ -1,4 +1,13 @@
 import numpy as np
+import pandas as pd
+
+
+def gini_criterion(node_data, class_col_name):
+    result = 0
+    for i in node_data[class_col_name].unique():
+        p = (node_data[class_col_name] == i).sum() / node_data.shape[0]
+        result += p * (1 - p)
+    return result
 
 
 class BCELoss:
@@ -29,3 +38,4 @@ class BCELoss:
             gradient += 2 * self.alpha * weights
 
         return gradient
+
