@@ -1,16 +1,18 @@
 import numpy as np
-from myKaggleLib.losses.regression import MSE
-from myKaggleLib.optimizers import SGD
+from myKaggleLib.losses.regression import MSELoss
+from myKaggleLib.optimizers import GD, SGD
 
 
 class LinearRegression:
-    def __init__(self, loss='MSE', optim='SGD'):
+    def __init__(self, loss='MSE', optim='GD'):
         self.weights = None
         self.optim = optim
 
         if loss == 'MSE':
-            self.loss = MSE()
-        if optim == 'SGD':
+            self.loss = MSELoss()
+        if optim == 'GD':
+            self.optim = GD()
+        elif optim == 'SGD':
             self.optim = SGD()
 
     def __initialize_weights(self, n_features):

@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class MSE:
+class MSELoss:
     def calculate_error(self, X, y, weights):
         return np.mean((np.dot(X, weights) - y) ** 2)
 
